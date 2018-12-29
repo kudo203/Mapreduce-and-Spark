@@ -1,0 +1,11 @@
+# Intellij
+.idea
+target
+*.iml
+
+# Input Output
+input
+output
+
+#OSX
+.DS_Store
