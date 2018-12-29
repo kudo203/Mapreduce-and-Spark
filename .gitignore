@@ -1,0 +1,13 @@
+# Intellij
+.idea
+target
+*.iml
+
+# Input Output
+input
+
+#OSX
+.DS_Store
+
+# Report
+Report.txt
