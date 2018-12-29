@@ -18,6 +18,9 @@ import org.apache.log4j.Logger;
 
 import java.io.IOException;
 
+/* Count follower count for each twitter id
+   This ignores those ids with zero followers
+ */
 public class CountFollowerCount extends Configured implements Tool {
 
 
@@ -43,6 +46,7 @@ public class CountFollowerCount extends Configured implements Tool {
     }
 
     public int run(final String[] args) throws Exception{
+        // Configuration
         final Configuration conf = getConf();
         final Job job = Job.getInstance(conf, "Count Follower Count");
         job.setJarByClass(CountFollowerCount.class);
@@ -51,9 +55,8 @@ public class CountFollowerCount extends Configured implements Tool {
         jobConf.set("mapreduce.output.textoutputformat.separator", ",");
 
         job.setMapperClass(Mapper1.class);
-
-        //IntSumReducer works as a Combiner
         job.setReducerClass(Reducer1.class);
+
         job.setOutputKeyClass(IntWritable.class);
         job.setOutputValueClass(IntWritable.class);
 
