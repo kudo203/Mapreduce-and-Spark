@@ -207,11 +207,6 @@ public class KMean extends Configured implements Tool {
                     rangeMin += increment;
                     rangeMax += increment;
                 }
-                /*Random r = new Random();
-                Double init = max*r.nextDouble();
-                for(int i = 0; i < K; i++){
-                    sb.append((init+i) + ",");
-                }*/
                 jobConf.set("initialCentroid", sb.toString());
             }
             code = job.waitForCompletion(true) ? 0 : 1;
